@@ -6,6 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },

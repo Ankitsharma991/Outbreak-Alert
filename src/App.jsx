@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import InfoBox from "./InfoBox";
+import Table from "./Table";
 import Map from "./Map";
+import { sortData } from "./util";
 import {
   Card,
   CardContent,
@@ -14,6 +16,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
 
   // console.log(countryInfo);
   useEffect(() => {
@@ -25,13 +28,15 @@ function App() {
             name: country.country,
             value: country.countryInfo.iso2,
           }));
+          const sortedData = sortData(data);
           setCountries(countries);
+          setTableData(sortedData);
         });
     };
     getCountriesData();
   }, []);
 
-  console.log("Country Info-->>>", countryInfo);
+  // console.log("Country Info-->>>", countryInfo);
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
@@ -98,6 +103,7 @@ function App() {
       <Card className="app__right">
         <CardContent>
           <h3>Live Cases by Country</h3>
+          <Table countries={tableData} />
           <h3>Worldwide new cases</h3>
         </CardContent>
       </Card>

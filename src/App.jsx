@@ -3,6 +3,7 @@ import "./App.css";
 import InfoBox from "./InfoBox";
 import Table from "./Table";
 import Map from "./Map";
+import LineGraph from "./LineGraph";
 import { sortData } from "./util";
 import {
   Card,
@@ -106,6 +107,7 @@ function App() {
           <Table countries={tableData} />
           <h3>Worldwide new cases</h3>
         </CardContent>
+        <LineGraph />
       </Card>
     </div>
   );
